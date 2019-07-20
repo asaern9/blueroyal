@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="block-30 block-30-sm item" style="background-image: url('{% static 'blog/images/bg_2.jpg' %}');" data-stellar-background-ratio="0.5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-10">
+          <span class="subheading-sm">{{ object.published_date|date:'d m, Y' }} by {{ object.reporter }}</span>
+              <h2 class="heading">{{ object.title }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="blog" class="site-section">
+    <div class="container">
+            
+            <div class="row">
+
+              <div class="col-md-8">
+                <h2 class="mb-3">{{ object.title }}</h2>
+                <p><img src="{{ object.picture.url }}" alt="" class="img-fluid"></p>
+                <p>{{ object.content }}</p>
+                <div class="float-right">
+                  <a role="button"  style="color: #c92f2f;"><i class="fas fa-user p-1" aria-hidden="true"></i>{{ object.reporter }}</a>
+                  <a role="button"  style="color: #c92f2f;"><i class="fas fa-calendar-alt p-1" aria-hidden="true"></i>{{ object.published_date|date:"F d, Y" }}</a>
+                </div>
+              </div> <!-- .col-md-8 -->
+            </div>
+          </div>
+  </div>
+  
+ {% endblock content %}

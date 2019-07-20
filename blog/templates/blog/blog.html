@@ -1,0 +1,58 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="block-30 block-30-sm item" style="background-image: url('{% static 'blog/images/bg_2.jpg' %}');" data-stellar-background-ratio="0.5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-10">
+          <span class="subheading-sm">Blog</span>
+              <h2 class="heading">News &amp; Events</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class=" site-section bg-light" id="blog">
+    <div class="container">
+      <div class="row">
+        <h6 class="text-muted pl-3" style="font-weight: bold; font-size: large">News</h6>
+          {% for news in news %}
+        <div class="col-md-12 mb-4">
+          <div class="block-3 d-md-flex">
+            <a class="image" href="{{ news.get_absolute_url }}" style="background-image: url('{{ news.picture.url }}'); "></a>
+            <div class="text">
+              <h2 class="heading"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
+              <p class="meta"><i class="fas fa-calendar-alt p-1"></i><a href="">{{ news.published_date|date:'d m, Y' }}</a> <span class="sep">&bullet;</span><i class="fas fa-user p-1"></i><span>{{ news.reporter }}</span> </p>
+              <p>{{ news.content|truncatewords:20 }}</p>
+              <p><a href="{{ news.get_absolute_url }}">Read More...</a></p>
+            </div>
+          </div>  
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+  </div>
+  <div class=" site-section bg-light" id="blog">
+
+    <div class="container">
+      <div class="row">
+        <h6 class="text-muted pl-3" style="font-weight: bold; font-size: large">Event</h6>
+          {% for event in event %}
+        <div class="col-md-12 mb-4">
+          <div class="block-3 d-md-flex">
+            <a class="image" href="blog-single.html" style="background-image: url('{{ event.picture.url }}'); "></a>
+            <div class="text">
+              <h2 class="heading">{{ event.title }}</h2>
+              <p class="meta"><span><i class="fas fa-calendar-alt p-1"></i>{{ event.date|date:'d m, Y' }}<i class="fas fa-clock p-1"></i>{{ event.time_start|date:'g:i A' }}-{{ event.time_end|date:'g:i A' }}</span></p>
+              <p>{{ event.content }}</p>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+  </div>
+  </div>
+
+{% endblock content %}
