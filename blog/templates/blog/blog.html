@@ -42,7 +42,7 @@
           {% for event in event %}
         <div class="col-md-12 mb-4">
           <div class="block-3 d-md-flex">
-            <a id="optionalstuff" class="image" href="blog-single.html" style="background-image: url('{{ event.picture.url }}'); "></a>
+            <a id="optionalstuff" class="image" style="background-image: url('{{ event.picture.url }}'); "></a>
             <div class="text">
               <h2 class="heading">{{ event.title }}</h2>
               <p class="meta"><span><i class="fas fa-calendar-alt p-1"></i>{{ event.date|date:'d m, Y' }}<i class="fas fa-clock p-1"></i>{{ event.time_start|date:'g:i A' }}-{{ event.time_end|date:'g:i A' }}</span></p>
